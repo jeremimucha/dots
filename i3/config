@@ -233,7 +233,7 @@ mode "resize" {
 exec_always --no-startup-id xwallpaper --daemon --zoom /home/jmu/.config/xwallpaper/013.png
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id numlockx on
-exec xset r rate 200 40
+exec_always --no-startup-id xset r rate 200 30
 exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -p'
 exec --no-startup-id picom
 
