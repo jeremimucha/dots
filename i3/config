@@ -234,7 +234,7 @@ exec_always --no-startup-id xwallpaper --daemon --zoom /home/jmu/.config/xwallpa
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id sleep 1 && xset r rate 200 36
-exec_always --no-startup-id setxkbmap pl, mode "default"
+exec_always --no-startup-id setxkbmap pl, mode "default" -option caps:escape
 exec --no-startup-id xautolock -time 5 -locker 'i3lock-fancy -pg'
 exec --no-startup-id picom
 
