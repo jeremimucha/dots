@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# set -e
+set -euo pipefail
+IFS=$'\n\t'
+
 
 # https://launchpad.net/~fish-shell/+archive/ubuntu/release-3
 install_fish()
@@ -9,7 +11,7 @@ install_fish()
     sudo apt install fish
 }
 
-set_fish_default_shell
+set_fish_default_shell()
 {
     chsh -s $(which fish)
 }

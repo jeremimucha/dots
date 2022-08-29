@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
 #     --slave /usr/bin/$1 $1 /usr/bin/$1-\${version} \\
 
