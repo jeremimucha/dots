@@ -14,17 +14,15 @@ make_script_tmp()
 install_i3wm()
 {
     # All i3wm packages are available natively for ubuntu
-    sudo apt update && apt install -y \
-        dunst
+    sudo apt update && sudo apt install -y \
+        dunst \
         i3 \
         i3lock-fancy \
-        # polybar \
         xwallpaper \
         rofi \
         xdg-utils \
         sensible-utils \
         alsa-utils \
-        rxvt-unicode \
         flameshot \
         xautolock \
         numlockx \
@@ -59,7 +57,7 @@ i3gaps_dependencies()
         libxcb-shape0-dev \
         autoconf \
         ninja \
-        meson \
+        meson
 }
 
 install_xrm()
@@ -126,6 +124,33 @@ install_polybar_dependencies()
 }
 
 install_polybar() {
+    sudo apt update -yq && sudo apt install -y \
+      pkg-config \
+      python3-sphinx \
+      python3-packaging \
+      libuv1-dev \
+      libcairo2-dev \
+      libxcb1-dev \
+      libxcb-util0-dev \
+      libxcb-randr0-dev \
+      libxcb-composite0-dev \
+      python3-xcbgen \
+      xcb-proto \
+      libxcb-image0-dev \
+      libxcb-ewmh-dev \
+      libxcb-icccm4-dev
+
+    sudo apt install -y \
+      libxcb-xkb-dev \
+      libxcb-xrm-dev \
+      libxcb-cursor-dev \
+      libasound2-dev \
+      libpulse-dev \
+      libjsoncpp-dev \
+      libmpdclient-dev \
+      libcurl4-openssl-dev \
+      libnl-genl-3-dev
+
     git clone https://github.com/jaagr/polybar.git
     # shellcheck disable=SC2164
     cd polybar
@@ -193,5 +218,5 @@ install_i3_gaps_all()
 
 # Instal just regular i3wm for now.
 # TODO: Handle choice between i3wm and i3gaps
-# install_i3wm
+install_i3wm
 install_polybar
