@@ -11,7 +11,7 @@ Hopefully each should be self explenatory.
 
 Also checkout
 * `.xprofile` - multi-monitor config. Run `xrandr` and adopt to your detected screens.
-* `.Xresources` - urxvt and rofi conifg.
+* `.Xresources` - rofi conifg.
 
 
 ## References
