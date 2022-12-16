@@ -46,7 +46,7 @@ install_completions()
     fish -c "mkdir -p \$fish_complete_path[1] && cp extra/completions/alacritty.fish \$fish_complete_path[1]/alacritty.fish"
 }
 
-install_rust
+# install_rust
 install_dependencies
 install_allacrity
 install_completions

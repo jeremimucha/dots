@@ -159,7 +159,7 @@ install_polybar() {
     # shellcheck disable=SC2164
     cd build
     sudo make install
-    make userconfig
+    # make userconfig
     cd ../..
     rm -fr polybar
 }
@@ -218,5 +218,5 @@ install_i3_gaps_all()
 
 # Instal just regular i3wm for now.
 # TODO: Handle choice between i3wm and i3gaps
-install_i3wm
+# install_i3wm
 install_polybar
