@@ -1,0 +1,13 @@
+- [ ] Consider adding the capslock-escape/ctrl mode, based on the following:
+      > Step 1. Install XCAPE
+        Install XCAPE (xcape). (Linux utility to configure modifier keys to act as other keys when pressed and released on their own.)
+
+        Ubuntu:
+
+        sudo apt-get install xcape
+        Step 2. Run the command
+        # make CapsLock behave like Ctrl:
+        setxkbmap -option ctrl:nocaps
+
+        # make short-pressed Ctrl behave like Escape:
+        xcape -e 'Control_L=Escape'
