@@ -2,8 +2,16 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-_SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+_SCRIPT_NAME="$( dirname -- "${BASH_SOURCE[0]}" )"
+_SCRIPT_DIR=$( cd -- "${_SCRIPT_NAME}" &> /dev/null && pwd )
 _WORKDIR=$(pwd)
+
+_SCRATCHDIR=$(mktemp -d -t install-btop-tmp-XXXXXXXXXX)
+function cleanup {
+  rm -rvf "$_SCRATCHDIR"
+}
+trap cleanup EXIT
+cd "${_SCRATCHDIR}"
 
 # https://github.com/alacritty/alacritty/blob/master/INSTALL.md
 
@@ -37,8 +45,6 @@ install_allacrity()
     sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
     sudo desktop-file-install extra/linux/Alacritty.desktop
     sudo update-desktop-database
-    cd ../
-    rm -rf alacritty
 }
 
 install_completions()

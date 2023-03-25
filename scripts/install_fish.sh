@@ -2,6 +2,13 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+_SCRATCHDIR=$(mktemp -d -t install-btop-tmp-XXXXXXXXXX)
+function cleanup {
+  rm -rvf "$_SCRATCHDIR"
+}
+trap cleanup EXIT
+cd "${_SCRATCHDIR}"
+
 
 # https://launchpad.net/~fish-shell/+archive/ubuntu/release-3
 install_fish()
@@ -21,7 +28,6 @@ install_fisher()
 {
     curl -sL https://git.io/fisher -o fisher_tmp
     fish -c ". fisher_tmp && fisher install jorgebucaran/fisher"
-    rm -rf fisher_tmp
 }
 
 # https://github.com/jorgebucaran/hydro#configuration

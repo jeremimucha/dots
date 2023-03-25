@@ -2,6 +2,14 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+_SCRATCHDIR=$(mktemp -d -t install-btop-tmp-XXXXXXXXXX)
+function cleanup {
+  rm -rvf "$_SCRATCHDIR"
+}
+trap cleanup EXIT
+cd "${_SCRATCHDIR}"
+
+
 ensure_dependencies()
 {
     if ! [ -x $(command -v unzip) ]
@@ -16,8 +24,6 @@ install_hasklig()
     curl -sL https://github.com/i-tu/Hasklig/releases/download/v1.2/Hasklig-1.2.zip -o hasklig_tmp.zip
     unzip hasklig_tmp.zip -d ./hasklig_tmp
     sudo cp -r './hasklig_tmp/OTF/' /usr/local/share/fonts/hasklig/
-
-    rm -rf hasklig_tmp.zip hasklig_tmp
 
     sudo fc-cache -f -v
 }

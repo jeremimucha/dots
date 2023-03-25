@@ -2,9 +2,15 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-
 # https://github.com/aristocratos/btop#installation
 # https://github.com/aristocratos/btop/releases
+
+_SCRATCHDIR=$(mktemp -d -t install-btop-tmp-XXXXXXXXXX)
+function cleanup {
+  rm -rvf "$_SCRATCHDIR"
+}
+trap cleanup EXIT
+
 
 install_btop()
 {
@@ -13,8 +19,7 @@ install_btop()
     cd btop
     sudo make install
     sudo make setuid
-    cd ../
-    rm -rf btop/ btop_installer.tbz
 }
 
+cd "$_SCRATCHDIR"
 install_btop
