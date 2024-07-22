@@ -7,7 +7,7 @@ Check the `scripts` directory. Assuming you already installed the build-essentia
 * `install_fish.sh`,
 * `install_hasklig.sh`,
 * `install_i3wm.sh`,
-Hopefully each should be self explenatory.
+Hopefully each should be self explanatory.
 
 Also checkout
 * `.xprofile` - multi-monitor config. Run `xrandr` and adopt to your detected screens.

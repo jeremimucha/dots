@@ -6,7 +6,7 @@ _SCRIPT_NAME="$( dirname -- "${BASH_SOURCE[0]}" )"
 _SCRIPT_DIR=$( cd -- "${_SCRIPT_NAME}" &> /dev/null && pwd )
 _WORKDIR=$(pwd)
 
-_SCRATCHDIR=$(mktemp -d -t install-btop-tmp-XXXXXXXXXX)
+_SCRATCHDIR=$(mktemp -d -t install-alacritty-tmp-XXXXXXXXXX)
 function cleanup {
   rm -rvf "$_SCRATCHDIR"
 }

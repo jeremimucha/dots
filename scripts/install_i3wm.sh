@@ -5,25 +5,41 @@ IFS=$'\n\t'
 _SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 _WORKDIR=$(pwd)
 
-make_script_tmp()
-{
-    mkdir ${_WORKDIR}/install_i3gaps_tmp
-    cd ${_WORKDIR}install_i3gaps_tmp
+_SCRATCHDIR=$(mktemp -d -t install-i3wm-tmp-XXXXXXXXXX)
+function cleanup {
+  rm -rvf "$_SCRATCHDIR"
+}
+trap cleanup EXIT
+cd "${_SCRATCHDIR}"
+
+install_build_essentials() {
+  sudo apt update && sudo apt install -y \
+        autoconf \
+        ninja \
+        meson  
+}
+
+install_utils() {
+    sudo apt update && sudo apt install -y \
+        xdg-utils \
+        sensible-utils \
+        alsa-utils \
+        flameshot
+}
+
+install_dunst() {
+    sudo apt update && sudo apt install -y \
+        dunst
 }
 
 install_i3wm()
 {
     # All i3wm packages are available natively for ubuntu
     sudo apt update && sudo apt install -y \
-        dunst \
         i3 \
         i3lock-fancy \
         xwallpaper \
         rofi \
-        xdg-utils \
-        sensible-utils \
-        alsa-utils \
-        flameshot \
         xautolock \
         numlockx \
         fonts-font-awesome \
@@ -54,10 +70,7 @@ i3gaps_dependencies()
         rofi \
         xutils-dev \
         rxvt-unicode \
-        libxcb-shape0-dev \
-        autoconf \
-        ninja \
-        meson
+        libxcb-shape0-dev
 }
 
 install_xrm()
@@ -91,6 +104,14 @@ install_i3_gaps() {
     # ls -l /usr/bin/i3
     cd ../..
     rm -fr i3-gaps
+
+}
+
+install_sway() {
+
+}
+
+install_sway_dependencies() {
 
 }
 

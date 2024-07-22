@@ -33,13 +33,14 @@ install_nerdfonts()
 {
     local nerdfonts_url="https://github.com/ryanoasis/nerd-fonts/releases"
     local nerdfonts_version="v3.0.1"
-    local nerdfonts_to_install=("Hasklig" "FiraCode" "SourceCodePro")
+    # local nerdfonts_to_install=("Hasklig" "FiraCode" "SourceCodePro")
+    local nerdfonts_to_install=("SourceCodePro")
 
     for font in "${nerdfonts_to_install[@]}"; do
         curl -sL "${nerdfonts_url}/download/${nerdfonts_version}/${font}.zip" -o "${font}.zip"
         unzip "${font}.zip" -d "./${font}"
-        mkdir -p "$HOME/.testfonts/${font}"
-        cp -r "./${font}/" $HOME/.testfonts/${font}/
+        mkdir -p "$HOME/.fonts/${font}"
+        cp -r "./${font}/" $HOME/.fonts/${font}/
     done
 }
 
@@ -47,6 +48,6 @@ ensure_dependencies
 ensure_fonts
 
 cd "$_SCRATCHDIR"
-install_hasklig
+# install_hasklig
 install_nerdfonts
 sudo fc-cache -f -v
