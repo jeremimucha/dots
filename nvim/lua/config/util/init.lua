@@ -1,18 +1,13 @@
--- local LazyUtil = require("lazy.core.util")
---
 local M = {}
 
 -- setmetatable(M, {
 --   __index = function(t, k)
---     if LazyUtil[k] then
---       return LazyUtil[k]
---     end
 --     ---@diagnostic disable-next-line: no-unknown
 --     t[k] = require("config.util." .. k)
---     -- M.deprecated.decorate(k, t[k])
 --     return t[k]
 --   end,
 -- })
+M.mini = require("config.util.mini")
 
 function M.hello()
   vim.api.nvim_echo({
@@ -86,7 +81,7 @@ function M.get_pkg_path(pkg, path, opts)
   local ret = root .. "/packages/" .. pkg .. "/" .. path
   if opts.warn and not vim.loop.fs_stat(ret) and not require("lazy.core.config").headless() then
     vim.api.nvim_notify(
-    ("Mason package path not found for **%s**:\n- `%s`\nYou may need to force update the package."):format(pkg, path),
+      ("Mason package path not found for **%s**:\n- `%s`\nYou may need to force update the package."):format(pkg, path),
       vim.log.levels.WARN, {})
   end
   return ret

@@ -32,11 +32,11 @@ vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<c
 vim.keymap.set({ "n", "x", "o", "v" }, "<S-h>", "^", { desc = "Start of Line" })
 vim.keymap.set({ "n", "x", "o", "v" }, "<S-l>", "g_", { desc = "End of Line" })
 -- Move to matching brackets
-vim.keymap.set("n", "<S-j>", "%", { desc = "Matching Brackets" })
+vim.keymap.set({ "n", "v", "x", "o" }, "<S-j>", "%", { desc = "Matching Brackets" })
 
 -- paste over currently selected text without yanking it
-vim.keymap.set("v", "p", '"0p')
-vim.keymap.set("v", "P", '"0P')
+-- vim.keymap.set("v", "p", '"0p')
+-- vim.keymap.set("v", "P", '"0P')
 
 
 -- [[ Buffers ]]

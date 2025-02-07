@@ -218,7 +218,7 @@ return {
       telescope.load_extension("fzf")
 
 
-      require("config.telescope.multigrep").setup()
+      require("plugins.telescope.multigrep").setup()
 
       -- - Set the `dropdown` or `ivy` picker for `find_files` explicitly
       -- vim.keymap.set("n", "<space>en", function()

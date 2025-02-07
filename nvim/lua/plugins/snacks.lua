@@ -53,6 +53,7 @@ return {
     "folke/snacks.nvim",
     ---@type snacks.Config
     opts = {
+      -- vvv dashboard vvv
       dashboard = {
         width = 60,
         row = nil,                                                                   -- dashboard position. nil for center
@@ -82,12 +83,12 @@ return {
         },
         -- item field formatters
         formats = {
-          icon = function(item)
-            if item.file and item.icon == "file" or item.icon == "directory" then
-              return M.icon(item.file, item.icon)
-            end
-            return { item.icon, width = 2, hl = "icon" }
-          end,
+          -- icon = function(item)
+          --   if item.file and item.icon == "file" or item.icon == "directory" then
+          --     return M.icon(item.file, item.icon)
+          --   end
+          --   return { item.icon, width = 2, hl = "icon" }
+          -- end,
           footer = { "%s", align = "center" },
           header = { "%s", align = "center" },
           file = function(item, ctx)
@@ -111,7 +112,25 @@ return {
           { section = "startup" },
         },
       },
+      -- ^^^ dashboard ^^^
       terminal = { enabled = false },
+      -- indent = {
+      --   only_scope = true,   -- only show indent guides of the scope
+      --   only_current = true, -- only show indent guides in the current window
+      --   hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
+      --   animate = {
+      --     enabled = false,
+      --   },
+      --   ---@class snacks.indent.Scope.Config: snacks.scope.Config
+      --   scope = {
+      --     enabled = true, -- enable highlighting the current scope
+      --     -- priority = 200,
+      --     -- char = "│",
+      --     -- underline = false, -- underline the start of the scope
+      --     only_current = true, -- only show scope in the current window
+      --     -- hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
+      --   },
+      -- }
     }
   }
 }

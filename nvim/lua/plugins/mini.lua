@@ -14,10 +14,10 @@ return {
       -- require("mini.ai").setup { n_lines = 500 }
 
 
-    -- auto pairs
-    local pairs = require('mini.pairs')
-    pairs.setup {
-      -- JVim.mini.pairs()
+      -- auto pairs
+      local pairs = require('mini.pairs')
+      pairs.setup {
+        -- JVim.mini.pairs()
         modes = { insert = true, command = true, terminal = false },
         -- skip autopair when next character is one of these
         skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
@@ -28,8 +28,8 @@ return {
         skip_unbalanced = true,
         -- better deal with markdown code blocks
         markdown = true,
-    }
-  -- Better text-objects
+      }
+      -- Better text-objects
       local ai = require("mini.ai")
       local mini_ai_opts = {
         n_lines = 500,
@@ -39,21 +39,21 @@ return {
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           }),
           f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
-          d = { "%f[%d]%d+" }, -- digits
-          e = { -- Word with case
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),       -- class
+          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },           -- tags
+          d = { "%f[%d]%d+" },                                                          -- digits
+          e = {                                                                         -- Word with case
             { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
             "^().*()$",
           },
           -- g = JVim.mini.ai_buffer, -- buffer
-          u = ai.gen_spec.function_call(), -- u for "Usage"
+          u = ai.gen_spec.function_call(),                           -- u for "Usage"
           U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
         },
       }
       ai.setup(mini_ai_opts)
-      JVim.on_load("which", function ()
-        vim.schedule(function ()
+      JVim.on_load("which", function()
+        vim.schedule(function()
           JVim.mini.ai_whichkey(mini_ai_opts)
         end)
       end)
@@ -68,7 +68,6 @@ return {
       cursorword.setup({
         -- underline = false
       })
-
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -85,21 +84,21 @@ return {
           --   -- Whether to use for editing directories
           use_as_default_explorer = true,
         },
-        mappings = {
-          close       = 'q',
-          go_in       = 'l',
-          go_in_plus  = 'L',
-          go_out      = 'h',
-          go_out_plus = 'H',
-          mark_goto   = "'",
-          mark_set    = 'm',
-          reset       = '<BS>',
-          reveal_cwd  = '@',
-          show_help   = 'g?',
-          synchronize = '=',
-          trim_left   = '<',
-          trim_right  = '>',
-        },
+        -- mappings = {
+        --   close       = 'q',
+        --   go_in       = 'l',
+        --   go_in_plus  = 'L',
+        --   go_out      = 'h',
+        --   go_out_plus = 'H',
+        --   mark_goto   = "'",
+        --   mark_set    = 'm',
+        --   reset       = '<BS>',
+        --   reveal_cwd  = '@',
+        --   show_help   = 'g?',
+        --   synchronize = '=',
+        --   trim_left   = '<',
+        --   trim_right  = '>',
+        -- },
       })
 
       -- [[ MiniFiles keymaps ]]

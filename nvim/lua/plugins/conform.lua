@@ -34,6 +34,8 @@ return {
       end,
       cpp = { "clang-format" },
       c = { "clang-format" },
+      sh = { "shfmt" },
+      zsh = { "shfmt" },
       -- Use the "*" filetype to run formatters on all filetypes.
       -- ["*"] = { "codespell" },
       -- Use the "_" filetype to run formatters on filetypes that don't

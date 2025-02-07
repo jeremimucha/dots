@@ -71,6 +71,10 @@ return {
         -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
+
+        kind_icons = vim.tbl_extend("keep", {
+          Color = "██", -- Use block instead of icon for color items to make swatches more usable
+        }, JVim.config.icons.kinds)
       },
       completion = {
         accept = {
@@ -162,17 +166,6 @@ return {
     end,
   },
 
-  -- add icons
-  {
-    "saghen/blink.cmp",
-    opts = function(_, opts)
-      opts.appearance = opts.appearance or {}
-      opts.appearance.kind_icons = vim.tbl_extend("keep", {
-        Color = "██", -- Use block instead of icon for color items to make swatches more usable
-      }, JVim.config.icons.kinds)
-    end,
-  },
-
   -- -- lazydev
   -- {
   --     "saghen/blink.cmp",
@@ -191,11 +184,11 @@ return {
   --     },
   -- },
   -- catppuccin support
-  {
-    "catppuccin",
-    optional = true,
-    opts = {
-      integrations = { blink_cmp = true },
-    },
-  },
+  -- {
+  --   "catppuccin",
+  --   optional = true,
+  --   opts = {
+  --     integrations = { blink_cmp = true },
+  --   },
+  -- },
 }
